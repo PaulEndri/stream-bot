@@ -2,7 +2,7 @@ import Aidyn, { Commands } from 'aidyn';
 import LocalCommands from './Commands';
 import Koa from 'koa';
 import KoaRouter from 'koa-better-router';
-import Routes from './routes';
+import Routes from './Routes';
 import BodyParser from 'koa-body-parser';
 import AidynInjectorMiddleware from './Middleware/AidynInjector';
 import { USERS } from './constants';
