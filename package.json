@@ -6,14 +6,11 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"keywords": [
-		"pixelpub"
-	],
+	"keywords": [ "pixelpub" ],
 	"author": "Paul Endri",
 	"license": "MIT",
 	"dependencies": {
 		"aidyn": "github:PaulEndri/aidyn#master",
-		"bungie-sdk-alpha": "0.0.28",
 		"dotenv": "^6.1.0",
 		"koa": "^2.10.0",
 		"koa-better-ratelimit": "^2.1.2",
