@@ -8,14 +8,6 @@ import AidynInjectorMiddleware from './Middleware/AidynInjector';
 import { USERS } from './constants';
 
 const app = new Koa();
-const Router = KoaRouter({ prefix: '/api' });
-
-app.use(BodyParser());
-
-Routes.forEach(({ method, route, action }) => {
-	Router.addRoute(method, route, action);
-});
-
 const aidyn = new Aidyn({
 	Logging: 1,
 	ConnectionString: process.env.CONNECTION_STRING,
@@ -25,6 +17,14 @@ const aidyn = new Aidyn({
 });
 
 aidyn.Start({ ...Commands, ...LocalCommands }).then((aidynInstance) => {
+	const Router = KoaRouter({ prefix: `${process.env.API_PREFIX}/api` });
+
+	app.use(BodyParser());
+
+	Routes.forEach(({ method, route, action }) => {
+		Router.addRoute(method, route, action);
+	});
+
 	app.use(AidynInjectorMiddleware(aidynInstance));
 	app.use(Router.middleware());
 
