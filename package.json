@@ -1,0 +1,30 @@
+{
+	"name": "streaming_notificaiton_bot",
+	"version": "0.0.1",
+	"description": "Streaming Notificaiton Bot",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [ "pixelpub" ],
+	"author": "Paul Endri",
+	"license": "MIT",
+	"dependencies": {
+		"aidyn": "github:PaulEndri/aidyn#master",
+		"bungie-sdk-alpha": "0.0.28",
+		"dotenv": "^6.1.0",
+		"koa": "^2.10.0",
+		"koa-better-ratelimit": "^2.1.2",
+		"koa-better-router": "^2.1.1",
+		"koa-body-parser": "^1.1.2",
+		"mongoose": "^5.3.11",
+		"node-fetch": "^2.6.0"
+	},
+	"devDependencies": {
+		"@types/dotenv": "^6.1.0",
+		"@types/koa": "^2.0.50",
+		"@types/koa-bodyparser": "^4.3.0",
+		"@types/mongodb": "^3.1.14",
+		"@types/mongoose": "^5.3.1"
+	}
+}
