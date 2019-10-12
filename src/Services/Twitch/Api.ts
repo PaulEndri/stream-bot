@@ -33,7 +33,7 @@ export default class TwitchApiService {
 		const user = await this.GetUserData(userName);
 
 		const subscriptionData = {
-			'hub.callback': `http://${process.env.HOSTNAME}/api/twitch`,
+			'hub.callback': `http://${process.env.HOSTNAME}/${process.env.API_PREFIX}/api/twitch`,
 			'hub.mode': 'subscribe',
 			'hub.topic': `${TWITCH.GET_STREAM}?user_id${user.id}`,
 			'hub.lease_seconds': 864000
