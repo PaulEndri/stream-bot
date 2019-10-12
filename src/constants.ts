@@ -12,5 +12,5 @@ export const USERS = {
 
 export const GUILDS = {
 	PROD: process.env.GUILD_ID,
-	TEST: '577463478109863946'
+	TEST: process.env.GUILD_TEST_ID
 };
