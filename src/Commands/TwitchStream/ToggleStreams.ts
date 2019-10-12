@@ -12,7 +12,7 @@ export default class ToggleStream extends Command {
 	static NAME = 'toggleStreams';
 	static NAMESPACE = 'twitchStream';
 	static USERS = [ USERS.PAUL_ENDRI ];
-	public AllowedGuilds = [ GUILDS.TEST ];
+	public AllowedGuilds = [ ...Object.values(GUILDS) ];
 
 	public Blurb = 'Toggle Twitch Streaming Functionality on Current Server';
 	public Parametrized = true;

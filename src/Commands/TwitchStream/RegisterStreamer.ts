@@ -9,7 +9,7 @@ export default class RegisterStreamer extends Command {
 	static NAME = 'RegisterStreamer';
 	static NAMESPACE = 'twitchStream';
 	static USERS = [ USERS.PAUL_ENDRI ];
-	public AllowedGuilds = [ GUILDS.TEST ];
+	public AllowedGuilds = [ ...Object.values(GUILDS) ];
 
 	public Arguments = [ { name: 'user', type: 'twitch user id' } ];
 
