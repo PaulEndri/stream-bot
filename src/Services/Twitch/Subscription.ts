@@ -1,4 +1,4 @@
-import { ITwitchStream } from '../../Interfaces/Twitch/StreamResponse';
+import ITwitchStreamResponse, { ITwitchStream } from '../../Interfaces/Twitch/StreamResponse';
 import TwitchUserSubscriptionDataService from '../Data/TwitchUserSubscription';
 import Aidyn from 'aidyn';
 import ConfigurationDataService from '../Data/Configuration';
@@ -14,6 +14,10 @@ export default class TwitchSubscriptionService {
 	constructor(aidyn: Aidyn) {
 		this.botInstance = aidyn;
 		this.apiService = new TwitchApiService();
+	}
+
+	public async handleResponses(streamReponse: ITwitchStreamResponse) {
+		return await Promise.all(streamReponse.data.map((data) => this.handleResponse(data)));
 	}
 
 	public async handleResponse(streamData: ITwitchStream) {

@@ -1,5 +1,6 @@
 import { Context } from 'koa';
 import ITwitchStreamResponse from '../Interfaces/Twitch/StreamResponse';
+import TwitchSubscriptionService from '../Services/Twitch/Subscription';
 
 export default class TwitchController {
 	/**
@@ -14,12 +15,18 @@ export default class TwitchController {
 	}
 
 	public static async post(ctx: Context) {
-		const { data } = ctx.body as ITwitchStreamResponse;
+		const streamResponse = ctx.request.body as ITwitchStreamResponse;
+		const service = ctx.subscriptionService as TwitchSubscriptionService;
 
-		if (data.length === 0) {
-			ctx.status = 200;
-
-			return;
+		if (streamResponse.data.length !== 0) {
+			try {
+				await service.handleResponses(streamResponse);
+			} catch (e) {
+				console.error(e);
+			}
 		}
+
+		ctx.status = 200;
+		ctx.body = 'OK';
 	}
 }

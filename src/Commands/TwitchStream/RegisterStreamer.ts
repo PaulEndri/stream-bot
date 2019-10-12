@@ -2,12 +2,14 @@ import { Command } from 'aidyn';
 import { Message } from 'discord.js';
 import TwitchApiService from '../../Services/Twitch/Api';
 import ConfigurationDataService from '../../Services/Data/Configuration';
+import { USERS, GUILDS } from '../../constants';
+import TwitchUserSubscriptionDataService from '../../Services/Data/TwitchUserSubscription';
 
 export default class RegisterStreamer extends Command {
-	static NAME = 'RegisterStreamerStreamer';
+	static NAME = 'RegisterStreamer';
 	static NAMESPACE = 'twitchStream';
-	static USERS = [ '108688397819707392' ];
-	public AllowedGuilds = [ '276971523338928130' ];
+	static USERS = [ USERS.PAUL_ENDRI ];
+	public AllowedGuilds = [ GUILDS.TEST ];
 
 	public Arguments = [ { name: 'user', type: 'twitch user id' } ];
 
@@ -35,11 +37,12 @@ export default class RegisterStreamer extends Command {
 		const twitchApi = new TwitchApiService();
 
 		try {
-			await twitchApi.SubscribeToStream(args.user);
+			const user = await twitchApi.SubscribeToStream(args.user);
+			await TwitchUserSubscriptionDataService.Save(user, message.guild.id);
 		} catch (e) {
 			return message.channel.send(`[ERROR] Unable to register streamer: ${e.message}`);
 		}
 
-		return message.channel.send('[SUCCESS] Streamer Succesfully Registered');
+		return message.channel.send('[SUCCESS] ');
 	}
 }

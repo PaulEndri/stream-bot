@@ -17,7 +17,7 @@ export default class ConfigurationDataService {
 
 	static async GetEnabledConfigurations(guild: string[]) {
 		const configs = await Configuration.find({
-			Guild: { $in: guild },
+			GuildId: { $in: guild },
 			Enabled: true
 		});
 

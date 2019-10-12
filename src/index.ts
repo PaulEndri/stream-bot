@@ -3,8 +3,9 @@ import LocalCommands from './Commands';
 import Koa from 'koa';
 import KoaRouter from 'koa-better-router';
 import Routes from './routes';
-import BodyParser from 'koa-bodyparser';
+import BodyParser from 'koa-body-parser';
 import AidynInjectorMiddleware from './Middleware/AidynInjector';
+import { USERS } from './constants';
 
 const app = new Koa();
 const Router = KoaRouter({ prefix: '/api' });
@@ -19,7 +20,7 @@ const aidyn = new Aidyn({
 	Logging: 1,
 	ConnectionString: process.env.CONNECTION_STRING,
 	BotToken: process.env.BOT_TOKEN,
-	Owner: '180105971408830464',
+	Owner: USERS.PAUL_ENDRI,
 	Prefix: '%'
 });
 

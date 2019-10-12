@@ -19,7 +19,7 @@ export default class TwitchApiService {
 	}
 
 	public async GetGame(id: string): Promise<ITwitchGame> {
-		const gameResponse = await fetch(`${TWITCH.GET_GAME}?id=${id}`);
+		const gameResponse = await fetch(`${TWITCH.GET_GAME}?id=${id}`, { headers: this.headers });
 		const { data } = (await gameResponse.json()) as ITwitchGameResponse;
 
 		if (data.length > 1 || data.length === 0) {
@@ -29,7 +29,7 @@ export default class TwitchApiService {
 		return data[0];
 	}
 
-	public async SubscribeToStream(userName: string): Promise<null> {
+	public async SubscribeToStream(userName: string): Promise<ITwitchUser> {
 		const user = await this.GetUserData(userName);
 
 		const subscriptionData = {
@@ -47,13 +47,14 @@ export default class TwitchApiService {
 
 		await response;
 
-		return;
+		return user;
 	}
 
 	private async GetUserData(userName: string): Promise<ITwitchUser> {
 		const userResponse = await fetch(`${TWITCH.GET_USER}?login=${userName}`, {
 			headers: this.headers
 		});
+
 		const { data } = (await userResponse.json()) as ITwitchUserResponse;
 
 		if (data.length > 1 || data.length === 0) {
