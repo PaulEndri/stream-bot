@@ -10,7 +10,4 @@ export const USERS = {
 	OWNER: process.env.GUILD_OWNER
 };
 
-export const GUILDS = {
-	PROD: process.env.GUILD_ID,
-	TEST: process.env.GUILD_TEST_ID
-};
+export const GUILDS = [ process.env.GUILDS.split(', ') ];

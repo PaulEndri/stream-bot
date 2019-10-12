@@ -1,7 +1,7 @@
 import { Command } from 'aidyn';
 import { Message } from 'discord.js';
 import ConfigurationDataService from '../../Services/Data/Configuration';
-import { USERS, GUILDS } from '../../constants';
+import { USERS } from '../../constants';
 
 interface ToggleStreamArgs {
 	enabled: 'true' | 'false';
@@ -11,8 +11,7 @@ interface ToggleStreamArgs {
 export default class ToggleStream extends Command {
 	static NAME = 'toggleStreams';
 	static NAMESPACE = 'twitchStream';
-	static USERS = [ USERS.PAUL_ENDRI ];
-	public AllowedGuilds = [ ...Object.values(GUILDS) ];
+	static USERS = Object.values(USERS);
 
 	public Blurb = 'Toggle Twitch Streaming Functionality on Current Server';
 	public Parametrized = true;

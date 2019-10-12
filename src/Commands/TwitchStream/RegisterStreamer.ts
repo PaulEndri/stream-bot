@@ -2,14 +2,13 @@ import { Command } from 'aidyn';
 import { Message } from 'discord.js';
 import TwitchApiService from '../../Services/Twitch/Api';
 import ConfigurationDataService from '../../Services/Data/Configuration';
-import { USERS, GUILDS } from '../../constants';
+import { USERS } from '../../constants';
 import TwitchUserSubscriptionDataService from '../../Services/Data/TwitchUserSubscription';
 
 export default class RegisterStreamer extends Command {
 	static NAME = 'RegisterStreamer';
 	static NAMESPACE = 'twitchStream';
-	static USERS = [ USERS.PAUL_ENDRI ];
-	public AllowedGuilds = [ ...Object.values(GUILDS) ];
+	static USERS = Object.values(USERS);
 
 	public Arguments = [ { name: 'user', type: 'twitch user id' } ];
 
